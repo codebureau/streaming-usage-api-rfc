@@ -1,0 +1,116 @@
+openapi: 3.0.3
+info:
+  title: Unified Streaming Usage API
+  version: 0.1.0
+  description: >
+    A standardized API for retrieving personal streaming usage data across platforms.
+    Designed to empower users with visibility into their own viewing habits.
+
+servers:
+  - url: https://api.streaming-usage.local
+    description: Local mock server
+
+paths:
+  /viewing-history:
+    get:
+      summary: Retrieve user's viewing history
+      description: Returns a list of content items the user has watched, with timestamps and completion status.
+      parameters:
+        - name: startDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Viewing history retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ViewingSession'
+
+  /session-summary:
+    get:
+      summary: Retrieve aggregated usage summary
+      description: Returns total watch time, number of sessions, and average session length.
+      responses:
+        '200':
+          description: Summary retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageSummary'
+
+  /content-metadata/{contentId}:
+    get:
+      summary: Retrieve metadata for a specific content item
+      parameters:
+        - name: contentId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Metadata retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentMetadata'
+
+components:
+  schemas:
+    ViewingSession:
+      type: object
+      properties:
+        contentId:
+          type: string
+        title:
+          type: string
+        provider:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        completed:
+          type: boolean
+
+    UsageSummary:
+      type: object
+      properties:
+        totalWatchTimeMinutes:
+          type: integer
+        sessionCount:
+          type: integer
+        averageSessionLengthMinutes:
+          type: number
+
+    ContentMetadata:
+      type: object
+      properties:
+        contentId:
+          type: string
+        title:
+          type: string
+        genre:
+          type: string
+        runtimeMinutes:
+          type: integer
+        provider:
+          type: string
+        regionAvailability:
+          type: array
+          items:
+            type: string
