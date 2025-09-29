@@ -1,0 +1,8 @@
+- The core proposal. Structure it like a standards doc:
+- Abstract
+- Motivation
+- Definitions
+- API Schema Overview
+- Use Cases
+- Privacy Considerations
+- Future Extensions
