@@ -1,0 +1,8 @@
+{
+  "contentId": "nf-001",
+  "title": "Stranger Things",
+  "genre": "Sci-Fi",
+  "runtimeMinutes": 45,
+  "provider": "Netflix",
+  "regionAvailability": ["US", "AU", "UK"]
+}

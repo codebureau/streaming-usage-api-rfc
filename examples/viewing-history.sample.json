@@ -1,0 +1,18 @@
+[
+  {
+    "contentId": "nf-001",
+    "title": "Stranger Things",
+    "provider": "Netflix",
+    "startTime": "2025-09-27T20:00:00Z",
+    "endTime": "2025-09-27T20:45:00Z",
+    "completed": true
+  },
+  {
+    "contentId": "ds-002",
+    "title": "Bluey",
+    "provider": "Disney+",
+    "startTime": "2025-09-28T08:15:00Z",
+    "endTime": "2025-09-28T08:30:00Z",
+    "completed": false
+  }
+]
